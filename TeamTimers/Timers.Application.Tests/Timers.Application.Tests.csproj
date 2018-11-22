@@ -21,8 +21,4 @@
     <ProjectReference Include="..\Timers.Application\Timers.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Teams\Queries\" />
-  </ItemGroup>
-
 </Project>

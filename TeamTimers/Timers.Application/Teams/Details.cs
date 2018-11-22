@@ -12,13 +12,13 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using Timers.Domain.Entities;
 
-namespace Timers.Application.Team
+namespace Timers.Application.Teams
 {
-    public class TeamDetails
+    public class Details
     {
         private readonly IMediator _mediator;
 
-        public TeamDetails(IMediator mediator) => _mediator = mediator;
+        public Details(IMediator mediator) => _mediator = mediator;
 
         public Model Data { get; private set; }
 
