@@ -1,10 +1,14 @@
+using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Blazor.Server;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Net.Mime;
+using Timers.Persistence;
 
 namespace Timers.Blazor.Server
 {
@@ -14,6 +18,14 @@ namespace Timers.Blazor.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+
+            services.AddDbContext<TimersDbContext>();
+
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddMediatR(typeof(Startup));
+
             // Adds the Server-Side Blazor services, and those registered by the app project's startup.
             services.AddServerSideBlazor<App.Startup>();
 
@@ -25,6 +37,8 @@ namespace Timers.Blazor.Server
                     WasmMediaTypeNames.Application.Wasm,
                 });
             });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,8 +51,14 @@ namespace Timers.Blazor.Server
                 app.UseDeveloperExceptionPage();
             }
 
-            // Use component registrations and static files from the app project.
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(name: "default", template: "{controller}/{action}/{id?}");
+            });
+
             app.UseServerSideBlazor<App.Startup>();
+
+
         }
     }
 }
