@@ -12,8 +12,8 @@ namespace Timers.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Team> builder)
         {
             builder.Property(e => e.Name)
-                .HasMaxLength(30)
-                .IsRequired();
+                .HasMaxLength(30);
+                //.IsRequired();
         }
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Net.Mime;
+using System.Reflection;
 using Timers.Persistence;
 
 namespace Timers.Blazor.Server
@@ -24,7 +25,8 @@ namespace Timers.Blazor.Server
 
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddMediatR(typeof(Startup));
+            services.AddMediatR(typeof(Timers.Application.Teams.GetTeamDetailsQueryHandler)
+                .GetTypeInfo().Assembly);
 
             // Adds the Server-Side Blazor services, and those registered by the app project's startup.
             services.AddServerSideBlazor<App.Startup>();

@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Timers.Blazor.App\Timers.Blazor.App.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\" />
-  </ItemGroup>
-
 </Project>

@@ -12,24 +12,29 @@ namespace Timers.Persistence
             context.Database.EnsureCreated();
 
             context.Teams.AddRange(new[] {
-                new Team { TeamId = 1, Name ="Real Madrid" },
-                new Team { TeamId = 2, Name = "Barcelona" }
-            });
+                new Team { Name ="Real Madrid",
+                Players = new[]
+                {
+                new Player{ Name="James", Jersey="7"},
+                new Player{ Name="Pavon", Jersey="7"},
+                new Player{ Name="Medel", Jersey="7"},
+                new Player{  Name="Figueroa", Jersey="7"},
+                new Player{  Name="Cuadrado", Jersey="7"},
+                new Player{  Name="Ronaldo", Jersey="7"}
+                }
+                },
 
-            context.Players.AddRange(new[] {
-                new Player{ PlayerId=7, Name="James", Jersey="7", TeamId=1},
-                new Player{ PlayerId=8, Name="Pavon", Jersey="7", TeamId=1},
-                new Player{ PlayerId=9, Name="Medel", Jersey="7", TeamId=1},
-                new Player{ PlayerId=10, Name="Figueroa", Jersey="7", TeamId=1},
-                new Player{ PlayerId=11, Name="Cuadrado", Jersey="7", TeamId=1},
-                new Player{ PlayerId=12, Name="Ronaldo", Jersey="7", TeamId=1},
-
-                new Player{ PlayerId=1, Name="Messi", Jersey="10", TeamId=2},
-                new Player{ PlayerId=2, Name="Suarez", Jersey="9", TeamId=2},
-                new Player{ PlayerId=3, Name="Pele", Jersey="10", TeamId=2},
-                new Player{ PlayerId=4, Name="Vidal", Jersey="4", TeamId=2},
-                new Player{ PlayerId=5, Name="Reinoso", Jersey="8", TeamId=2},
-                new Player{ PlayerId=6, Name="Sanchez", Jersey="7", TeamId=2}
+                new Team { Name = "Barcelona",
+                Players = new[]
+                {
+                    new Player{  Name="Messi", Jersey="10"},
+                    new Player{  Name="Suarez", Jersey="9"},
+                    new Player{  Name="Pele", Jersey="10"},
+                    new Player{  Name="Vidal", Jersey="4"},
+                    new Player{  Name="Reinoso", Jersey="8"},
+                    new Player{  Name="Sanchez", Jersey="7"}
+                }
+                }
             });
 
             context.SaveChanges();

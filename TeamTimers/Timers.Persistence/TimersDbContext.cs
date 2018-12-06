@@ -19,11 +19,10 @@ namespace Timers.Persistence
 
         public DbSet<Team> Teams { get; set; }
 
-        //This code moved to ContextFactory
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlite("Data Source=timers.db");
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Data Source=timers.db");
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

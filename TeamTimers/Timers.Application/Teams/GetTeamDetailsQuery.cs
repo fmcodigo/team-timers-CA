@@ -28,13 +28,18 @@ namespace Timers.Application.Teams
         {
             _context = context;
             _configuration = configuration;
+            //TimersDbInitializer.SeedDatabase(_context);
         }
 
-        public Task<GetTeamDetailModel> Handle(GetTeamDetailsQuery message, CancellationToken token) =>
-            _context.Teams
+        public async Task<GetTeamDetailModel> Handle(GetTeamDetailsQuery message, CancellationToken token)
+        {
+            var result = await _context.Teams
             .Where(i => i.TeamId == message.Id)
             .ProjectTo<GetTeamDetailModel>(_configuration)
             .SingleOrDefaultAsync(token);
+
+            return result;
+        }
     }
 
     public class GetTeamDetailModel

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Timers.Application.Teams;
 
 namespace Timers.Blazor.Server.Controllers
 {
@@ -11,6 +14,10 @@ namespace Timers.Blazor.Server.Controllers
     [ApiController]
     public class TeamController : ControllerBase
     {
+        private readonly IMediator _mediator;
+
+        public TeamController(IMediator mediator) => _mediator = mediator;
+
         // GET: api/Team
         [HttpGet]
         public IEnumerable<string> Get()
@@ -19,10 +26,11 @@ namespace Timers.Blazor.Server.Controllers
         }
 
         // GET: api/Team/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(GetTeamDetailModel), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            return Ok(await _mediator.Send(new GetTeamDetailsQuery { Id = id }));
         }
 
         // POST: api/Team
