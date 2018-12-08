@@ -12,20 +12,20 @@ namespace Timers.Blazor.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TeamController : ControllerBase
+    public class TeamsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public TeamController(IMediator mediator) => _mediator = mediator;
+        public TeamsController(IMediator mediator) => _mediator = mediator;
 
-        // GET: api/Team
+        // GET: api/Teams
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/Team/5
+        // GET: api/Teams/5
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(GetTeamDetailModel), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Get(int id)
@@ -33,13 +33,13 @@ namespace Timers.Blazor.Server.Controllers
             return Ok(await _mediator.Send(new GetTeamDetailsQuery { Id = id }));
         }
 
-        // POST: api/Team
+        // POST: api/Teams
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT: api/Team/5
+        // PUT: api/Teams/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
