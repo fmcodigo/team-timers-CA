@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Blazor.Builder;
+using Microsoft.AspNetCore.Blazor.Services;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Net.Http;
 using Timers.Blazor.App.Services;
 
@@ -13,7 +15,16 @@ namespace Timers.Blazor.App
             // to read the forecast data.
             services.AddSingleton<WeatherForecastService>();
 
-            services.AddSingleton<HttpClient>();
+            services.AddScoped<HttpClient>(s =>
+            {
+                // Creating the URI helper needs to wait until the JS Runtime is initialized, so defer it.
+                var uriHelper = s.GetRequiredService<IUriHelper>();
+                return new HttpClient
+                {
+                    BaseAddress = new Uri(uriHelper.GetBaseUri())
+                };
+            });
+
         }
 
         public void Configure(IBlazorApplicationBuilder app)
