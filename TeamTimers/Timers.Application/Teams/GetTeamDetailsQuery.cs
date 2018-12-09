@@ -27,7 +27,6 @@ namespace Timers.Application.Teams
         {
             _context = context;
             _configuration = configuration;
-            //TimersDbInitializer.SeedDatabase(_context);
         }
 
         public async Task<TeamVM> Handle(GetTeamDetailsQuery message, CancellationToken token)

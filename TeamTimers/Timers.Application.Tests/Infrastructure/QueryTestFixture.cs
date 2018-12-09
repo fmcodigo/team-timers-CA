@@ -17,7 +17,7 @@ namespace Timers.Application.Tests.Infrastructure
 
             var config = new MapperConfiguration(c =>
             {
-                c.AddProfile(new Teams.MappingProfile());
+                c.AddProfile(new Timers.Application.MappingProfile());
             });
             var mapper = config.CreateMapper();
             ConfigurationProvider = mapper.ConfigurationProvider;

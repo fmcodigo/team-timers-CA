@@ -6,7 +6,7 @@ namespace Timers.Shared.ViewModels
 {
     public class GameSettingVM
     {
-        public int Id { get; set; }
+        public int GameSettingId { get; set; }
         public string Name { get; set; }
         public int MaxPlayersAllowed { get; set; }
         public int Periods { get; set; }

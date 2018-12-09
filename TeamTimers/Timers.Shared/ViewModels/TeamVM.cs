@@ -6,7 +6,7 @@ namespace Timers.Shared.ViewModels
 {
     public class TeamVM
     {
-        public int Id { get; set; }
+        public int TeamId { get; set; }
         public string Name { get; set; }
 
         public IEnumerable<PlayerVM> Players { get; set; }

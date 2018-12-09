@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Timers.Application.Teams;
 using Timers.Application.Tests.Infrastructure;
 using Timers.Persistence;
+using Timers.Shared.ViewModels;
 using Xunit;
 
 namespace Timers.Application.Tests.Features.Teams
@@ -30,7 +31,7 @@ namespace Timers.Application.Tests.Features.Teams
 
             var result = await sut.Handle(new GetTeamDetailsQuery { Id=1 }, CancellationToken.None);
 
-            result.ShouldBeOfType<GetTeamDetailModel>();
+            result.ShouldBeOfType<TeamVM>();
             result.TeamId.ShouldBe(1);
             result.Name.ShouldBe("Real Madrid");
         }

@@ -24,20 +24,23 @@ namespace Timers.Application.Games
         {
             _context = context;
             _configuration = configuration;
+            //TimersDbInitializer.SeedDatabase(_context);
         }
 
         public async Task<GameVM> Handle(DetailsQuery message, CancellationToken token)
         {
-            var result = await _context.Games
-            .Where(i => i.GameId == message.Id)
+            var gameVM = await _context.Games
+            .Where(g => g.GameId == message.Id)
+            .Include(g => g.HomeTeam).ThenInclude(t => t.Players)
+            .Include(g => g.VisitorTeam).ThenInclude(t => t.Players)
             .ProjectTo<GameVM>(_configuration)
             .SingleOrDefaultAsync(token);
 
-            return result;
+            return gameVM;
         }
     }
 
- 
+
     //public class GameVM
     //{
     //    int Id { get; set; }

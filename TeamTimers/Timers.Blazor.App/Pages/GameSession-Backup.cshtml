@@ -114,9 +114,9 @@ else
 
     protected override async Task OnInitAsync()
     {
-        var test = await Http.GetStringAsync("api/test");
+        var a = gameId;
         game = await Http.GetJsonAsync<GameVM>($"api/games/{gameId}");
-        var abc = game;
+
     }
 
     // Tabs
