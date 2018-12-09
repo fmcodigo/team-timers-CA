@@ -40,18 +40,6 @@ namespace Timers.Application.Teams
         }
     }
 
-    //erase
-    //public class GetTeamDetailModel
-    //{
-    //    public int TeamId { get; set; }
-    //    public string Name { get; set; }
-    //    public ICollection<Player> Players { get; set; }
-    //}
-
-    //public class MappingProfile : Profile
-    //{
-    //    public MappingProfile() => CreateMap<Domain.Entities.Team, GetTeamDetailModel>();
-    //}
 
     //public class Validator : AbstractValidator<Query>
     //{

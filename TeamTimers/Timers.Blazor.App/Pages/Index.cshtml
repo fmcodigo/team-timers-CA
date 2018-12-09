@@ -12,11 +12,17 @@
     <span class="oi oi-plus" aria-hidden="true"></span> game session
 </NavLink>
 
-@functions {
-int currentCount = 0;
+<ProgressBar Maximum="@secondstotal"
+ Now="@seconds" />
 
-void IncrementCount()
-{
-    currentCount++;
-}
+
+@functions {
+    int currentCount = 0;
+    int seconds=10;
+    int secondstotal=20;
+
+    void IncrementCount()
+    {
+        currentCount++;
+    }
 }

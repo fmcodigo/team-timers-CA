@@ -13,6 +13,6 @@ namespace Timers.Shared.ViewModels
         public int MinutesPerPeriod { get; set; }
         public bool IsCountdown { get; set; }
 
-        public int MaxPlayerSeconds { get; }
+        public int MaxPlayerSeconds => (MinutesPerPeriod * Periods * 60);
     }
 }
